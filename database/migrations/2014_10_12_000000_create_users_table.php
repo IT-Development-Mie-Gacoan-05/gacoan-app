@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('nama_lengkap')->length(200);
             $table->string('jabatan')->length(100);
             $table->string('divisi')->length(100);
-            $table->string('email')->unique();
+            $table->string('email');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
