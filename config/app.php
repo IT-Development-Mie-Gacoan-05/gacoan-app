@@ -154,6 +154,7 @@ return [
     | this array to grant expanded functionality to your applications.
     |
     */
+    'Excel' => Maatwebsite\Excel\Facades\Excel::class,
 
     'providers' => ServiceProvider::defaultProviders()->merge([
         /*

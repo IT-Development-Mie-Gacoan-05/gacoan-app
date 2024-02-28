@@ -31,7 +31,7 @@ class AuthController extends Controller
         ]);
 
         $credential = $request->only('email','password');
-        
+
         if (Auth::attempt($credential)) {
             $user = Auth::User();
 
@@ -43,7 +43,7 @@ class AuthController extends Controller
             return redirect()->intended('/');
         }
         return redirect('login')->withInput()->withError(['login_gagal'=>'these credentials not match']);
-    } 
+    }
 
 
     public function Register() {
@@ -71,9 +71,12 @@ class AuthController extends Controller
 
             return redirect()->route('login');
     }
-    public function Logout(Request $request) {
+    public function logout(Request $request) {
         $request->session()->flush();
         Auth::logout();
         return Redirect('login');
     }
-}   
+
+
+
+}

@@ -4,7 +4,9 @@ use App\Models\User;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CeoController;
 use App\Http\Controllers\HeadController;
+use App\Http\Controllers\DocumentController;
 use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -17,9 +19,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/', function () {
+    return redirect('login');
+});
 
 //Auth web
 Route::get('login', [AuthController::class,'index'])->name('login');
@@ -33,6 +35,9 @@ Route::group(['middleware' => ['auth']], function () {
     Route::group(['middleware' => ['AuthLogin:ceo']], function () {
         Route::resource('ceo', CeoController::class);
     });
+    Route::resource('document', DocumentController:: class);
+    // Route::resource('dashboard', HeadController::class);
+
     Route::group(['middleware' => ['AuthLogin:head']], function () {
         Route::resource('head', HeadController::class);
     });
